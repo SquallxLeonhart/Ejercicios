@@ -16,8 +16,8 @@ public class Test23 {
 		
 		int x = 5;
 		while (isAvailable(x)) {
-			--x;
-			System.out.println(x);	
+//			--x;
+			System.out.println(x--);	
 			
 		}
 		
@@ -25,7 +25,7 @@ public class Test23 {
 		x = 5;
 		do {
 			System.out.println(x-- + " " );
-		} while (x >= 0);
+		} while (x == 0);
 		
 	}
 	

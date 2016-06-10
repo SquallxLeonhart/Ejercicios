@@ -9,17 +9,18 @@ public class Test22 {
 		int x = 100;
 		int a = x++; //100
 		int b = ++x; //102
-		int c = x++; //102
-		int d = (a<b) ? ((a<c) ? a : ((b<c) ? b: c)) : c;
-		System.out.println(d);
+		int c = x++; //102 x = 103
+		int d = (a < b) ? ( a < c) ? a : ( b < c ) ?  b : c : c;
+		System.out.println("d: "+ d);
 		System.out.println(x > 2 ? x < 4 ? 10 : 8 : 7);
 		
+		////////////
 		ArrayList<Tiger> myList = new ArrayList<>();
-		myList.add(new Cat());
+//		myList.add(new Cat());
 		
 		
 		// /////////////
-		
+		System.out.println("chs");
 		String [][] chs = new String[2][];
 		chs[0] = new String[2];
 		chs[1] = new String[5];

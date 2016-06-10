@@ -37,6 +37,18 @@ public class Person {
 			continue;
 		}
 		
+		////////////////////////////////////
+		System.out.println("arr2");
+		String[] arr2 = {"A", "B", "C", "D"};
+		for (int i = 0; i < arr2.length; i++) {
+            System.out.println(arr2[i]);
+            if (arr2[i].equals("C")) {
+                continue;
+            }
+            System.out.println("Work done");
+            break;
+        }
+		
 		String str = " ";
 		str.trim();
 		System.out.println(str.equals("") +  " " + str.isEmpty());
