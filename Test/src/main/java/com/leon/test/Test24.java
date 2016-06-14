@@ -62,11 +62,11 @@ public class Test24 {
 		
 		
 		//////////////////////
-		
+		System.out.println("Q34 JJ");
 		int ii = 0;
 		int jj = 7;
 		for (ii = 0; ii < jj - 1; ii = ii + 2) {
-			System.out.println();
+			System.out.println(ii + " ");
 		}
 		
 		//////////////////
@@ -83,7 +83,7 @@ public class Test24 {
 		String str1 = sb1.toString();
 		
 		String str2 = str1;
-		
+//		String str2 = "Duke";
 		
 		System.out.println(str1 == str2);
 	}

@@ -35,8 +35,8 @@ public class Test8 {
         shirts[1][0] = "small";
         shirts[1][1] = "medium";
         
-        for (int index = 0; index < 2; ++index) {
-            for (int idx = 0; idx < 2; ++idx) {
+        for (int index = 0; index < 2; index++) {
+            for (int idx = 0; idx < 2; idx++) {
                 System.out.print(shirts[index][idx] + " : ");
 //                j++;  
             }

@@ -17,7 +17,7 @@ public class Test23 {
 		int x = 5;
 		while (isAvailable(x)) {
 //			--x;
-			System.out.println(x--);	
+			System.out.print(--x);	
 			
 		}
 		
