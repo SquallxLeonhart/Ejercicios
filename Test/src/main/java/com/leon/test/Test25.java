@@ -24,6 +24,38 @@ public class Test25 {
 		String planets[] = {"Mercury", "Venus", "Earth", "Mars"};
 		System.out.println(planets.length);
 		System.out.println(planets[1].length());
+		
+		///////////////////
+		//Q38
+		double discount = 0;
+		int qty = Integer.parseInt("81");
+		
+		if (qty >= 90) {
+		    discount = 0.5;
+        }
+		if (qty > 80 && qty < 90) {
+		    discount = 0.2;
+        }
+		System.out.println("A: " + discount);
+		discount = 0;
+		
+		discount = (qty >= 90) ? 0.5 : (qty > 80) ? 0.2 : 0;
+		System.out.println("C: " + discount);
+        discount = 0;
+		
+		if (qty > 80 && qty < 90) {
+            discount = 0.2;
+        } else {
+            discount = 0;
+        }
+		
+		if (qty >= 90) {
+            discount = 0.5;
+        } else {
+            discount = 0;
+        }
+		System.out.println("D: " + discount);
+		
 	}
 }
 

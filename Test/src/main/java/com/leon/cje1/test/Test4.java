@@ -1,6 +1,7 @@
 package com.leon.cje1.test;
 
-import java.time.DayOfWeek;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Test4 {
     public static void main(String[] args) {
@@ -27,6 +28,11 @@ public class Test4 {
         String xx = "Java";
         StringBuffer yy = new StringBuffer(xx);
         System.out.println(xx.equals(yy));
+        
+        List <Number> listNumber = new ArrayList<>();
+        listNumber.add(new Integer(100));
+        listNumber.add(new Float(100f));
+        listNumber.add(new Double(100));
 
     }
 }
