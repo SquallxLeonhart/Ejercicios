@@ -45,6 +45,7 @@ public class ClassLambda {
         IntStream.rangeClosed(1, 5)
             .forEach(System.out::println);
         
+        System.out.println("REDUCE");
         System.out.println(IntStream.rangeClosed(1, 5)
                 .reduce((x, y) -> x * y ).getAsInt());
         
@@ -69,7 +70,12 @@ public class ClassLambda {
                 Arrays.asList("follow your heart but take your brain with you".split(" "));
                 Comparator<String> lengthCompare2 = (str1, str2) -> str1.length() - str2.length();
                 
-        words.stream().distinct().sorted(lengthCompare2).forEach(System.out::println);
+//        words.stream().distinct().sorted(lengthCompare2).forEach(System.out::println);
+        
+        words.stream()
+            .distinct()
+            .sorted(lengthCompare2)
+            .forEach(System.out::println);
         
         
         System.out.println("---------------------");
