@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.NavigableMap;
 import java.util.Optional;
 import java.util.TreeMap;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -96,7 +97,24 @@ public class ClassLambda {
         System.out.println("---------------------");
         Arrays.asList(1,2,3,4,5,6)
         .parallelStream()
-        .forEach(s -> System.out.print(s+" "));
+        .forEach(s -> System.out.println(s+" "));
+        
+        
+        System.out.println("reduce()---------------------");
+        Stream<Integer> stream = Stream.of(3, 5, 6);
+        System.out.println(stream.reduce(1, (a, b) -> a*b));
+        
+        BinaryOperator<Integer> op = (a, b) -> a * b;
+        Stream<Integer> empty = Stream.empty();
+        Stream<Integer> oneElement = Stream.of(3);
+        Stream<Integer> threeElements = Stream.of(3, 5, 6);
+        empty.reduce(op).ifPresent(System.out::println); // no output
+        oneElement.reduce(op).ifPresent(System.out::println); // 3
+        threeElements.reduce(op).ifPresent(System.out::println); // 90
+        
+        BinaryOperator<Integer> op2 = (a, b) -> a * b;
+        Stream<Integer> stream2 = Stream.of(3, 5, 6);
+        System.out.println(stream2.reduce(1, op2, op2)); // 90
     }
     
     public static <T, R extends Number> void fill(List<T> list, R val) {

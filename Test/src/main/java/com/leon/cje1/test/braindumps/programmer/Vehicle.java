@@ -17,6 +17,7 @@ import java.util.Properties;
 import java.util.TreeMap;
 import java.util.function.IntFunction;
 import java.util.function.IntUnaryOperator;
+import java.util.function.Predicate;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -182,6 +183,59 @@ public class Vehicle {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        
+        
+        System.out.println("Q33----------------------------");
+        int i;
+        char cc;
+        try (FileInputStream fis = new FileInputStream("src/main/resources/course.txt");
+                InputStreamReader isr = new InputStreamReader(fis);) {
+            while (isr.ready()) { // line n1
+                isr.skip(2);
+                i = isr.read();
+                cc = (char) i;
+                System.out.print(cc);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("");
+        
+        System.out.println("Q38----------------------------");
+        List<String> listVal = Arrays.asList("Joe", "Paul", "Alice", "Tom");
+        System.out.println (
+        // line n1
+                listVal.stream().filter(x2 -> x2.length()>3).count()
+//                listVal.stream().map(x2 -> x2.length()>3).collect(Collectors.toList())
+//                listVal.stream().filter(x2 -> x2.length()>3).mapToInt(x2 -> x2).count()
+        );
+        
+        
+        System.out.println("Q40----------------------------");
+        List<String> str = Arrays.asList ("my", "pen", "is", "your", "pen");
+        Predicate<String> test = s -> {
+            int ii = 0;
+            boolean result = (s.contains("pen"));
+//            System.out.println(ii);
+            System.out.println(ii++ + ":");
+//            System.out.println(ii);
+            return result;
+        };
+        
+        str.stream()
+            .filter(test)
+            .findFirst()
+            .ifPresent(System.out::print);
+        
+        
+        System.out.println("Q42----------------------------");
+        List<String> empDetails = Arrays.asList("100, Robin, HR",
+                "200, Mary, AdminServices",
+                "101, Peter, HR");
+                empDetails.stream()
+                .filter(s-> s.contains("1"))
+                .sorted()
+                .forEach(System.out::println); //line n1
     }
     
     public static void recDelete(String dirName) throws IOException {
