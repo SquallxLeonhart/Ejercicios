@@ -11,13 +11,18 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.TreeMap;
+import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.IntUnaryOperator;
 import java.util.function.Predicate;
+import java.util.function.ToIntFunction;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -211,7 +216,7 @@ public class Vehicle {
         );
         
         
-        System.out.println("Q40----------------------------");
+        System.out.println("Q41----------------------------");
         List<String> str = Arrays.asList ("my", "pen", "is", "your", "pen");
         Predicate<String> test = s -> {
             int ii = 0;
@@ -225,7 +230,7 @@ public class Vehicle {
         str.stream()
             .filter(test)
             .findFirst()
-            .ifPresent(System.out::print);
+            .ifPresent(System.out::println);
         
         
         System.out.println("Q42----------------------------");
@@ -236,6 +241,44 @@ public class Vehicle {
                 .filter(s-> s.contains("1"))
                 .sorted()
                 .forEach(System.out::println); //line n1
+          
+        System.out.println("Q46----------------------------");
+        List<Integer> nums = Arrays.asList(10, 20, 8);
+        System.out.println(
+                nums.stream().max(Comparator.comparing(e -> e)).get()
+        ); 
+        
+        System.out.println("Q54 ----------------------------");
+        List<Integer> codes = Arrays.asList (10, 20);
+//        UnaryOperator<Double> uo = s -> s +10.0;
+        UnaryOperator<Integer> uo = s -> s + 10;
+        codes.replaceAll(uo);
+        codes.forEach(c1 -> System.out.println(c1));
+        
+        System.out.println("Q58 ----------------------------");
+        String str3 = "Java is a programming language";
+        ToIntFunction<String> indexVal = str3::indexOf; //line n1
+        int x3 = indexVal.applyAsInt("Java");//line n2
+        System.out.println(x3);
+        
+        System.out.println("Q59 ----------------------------");
+        List<String> codes2 = Arrays.asList ("DOC", "MPEG", "JPEG");
+        codes2.forEach (c4 -> System.out.print(c4 + " "));
+        String fmt = codes2.stream()
+        .filter (s-> s.contains ("PEG"))
+        .reduce((s, t) -> s + t)
+        .get();
+        System.out.println("\n" + fmt);
+        
+        System.out.println("Q60 ----------------------------");
+        List<String> nL = Arrays.asList("Jim", "John", "Jeff");
+        Function<String, String> funVal = s -> "Hello : ".concat(s);
+        
+        nL.stream()
+        .map(funVal)
+//        .collect(Collectors.toList()).forEach(System.out::println);
+        .peek(System.out::print);
+                
     }
     
     public static void recDelete(String dirName) throws IOException {
