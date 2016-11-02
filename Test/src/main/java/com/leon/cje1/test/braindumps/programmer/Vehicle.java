@@ -3,6 +3,8 @@ package com.leon.cje1.test.braindumps.programmer;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
@@ -10,19 +12,25 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.TreeMap;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.IntUnaryOperator;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -190,7 +198,7 @@ public class Vehicle {
         }
         
         
-        System.out.println("Q33----------------------------");
+        System.out.println("Q33------Q2----------------------");
         int i;
         char cc;
         try (FileInputStream fis = new FileInputStream("src/main/resources/course.txt");
@@ -278,7 +286,181 @@ public class Vehicle {
         .map(funVal)
 //        .collect(Collectors.toList()).forEach(System.out::println);
         .peek(System.out::print);
+        
+        System.out.println("Q62 ----------------------------");
+//        Locale loc1 = "UK";
+//        Locale loc2 = Locale.getInstance("ru");
+//        Locale loc3 = Locale.getLocaleFactory("RU");
+        Locale loc4 = Locale.UK;
+        Locale loc5 = new Locale ("ru", "RU");
+        
+        System.out.println("Q66 ----------------------------");
+        LocalDate valentinesDay = LocalDate.of(2015, Month.FEBRUARY, 14);
+        LocalDate nextYear = valentinesDay.plusYears(1);
+        nextYear.plusDays(15); //line n1
+        System.out.println(nextYear);
+        
+        System.out.println("Q67 ----------------------------");
+//        BiFunction<Integer, Double, Integer> val = (t1, t2) -> t1 + t2;//line n1
+        BiFunction<Integer, Double, Double> val = (t1, t2) -> t1 + t2;//line n1
+        System.out.println(val.apply(10, 10.5));
+        
+        System.out.println("Q69 ----------------------------");
+//        UnaryOperator<Integer> uo1 = s7 -> s7*2;//line n1
+        UnaryOperator<Double> uo1 = s7 -> s7*2;//line n1
+        List<Double> loanValues = Arrays.asList(1000.0, 2000.0);
+        loanValues.stream()
+        .filter(lv -> lv >= 1500)
+        .map(lv -> uo1.apply(lv))
+        .forEach(s6 -> System.out.print(s6 + " "));
+        System.out.println("");
+        
+        System.out.println("Q77 ----------------------------");
+        try {
+            Path source = Paths.get("src/main/resources/green.txt");
+            Path target = Paths.get("src/main/resources/colors/yellow.txt");
+            Files.move(source, target, StandardCopyOption.ATOMIC_MOVE);
+//            Files.delete(source);
+         
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+        
+        System.out.println("Q79 ----------------------------");
+        List<Integer> list1 = Arrays.asList(10, 20);
+        List<Integer> list2 = Arrays.asList(15, 30);
+        
+        Stream.of(list1, list2)
+        .flatMap(list -> list.stream())
+        .forEach(s -> System.out.print(s + " "));
+        
+//        Stream.of(list1, list2)
+//        .flatMap(list -> list.intStream())
+//        .forEach(s -> System.out.print(s + " "));
+        
+//        list1.stream()
+//        .flatMap(list2.stream().flatMap(e1 -> e1.stream()))
+//        .forEach(s -> System.out.println(s + " "));
+        
+//        Stream.of(list1, list2)
+//        .flatMapToInt(list -> list.stream())
+//        .forEach(s -> System.out.print(s + " "));
+        
+        
+        System.out.println("Q80 ----------------------------");
+        BufferedReader brCopy = null;
+        try (BufferedReader br = new BufferedReader (new FileReader("employee.txt"))) { //line n1
+        br.lines().forEach(c5 -> System.out.println(c5));
+        brCopy = br;//line n2
+        brCopy.ready(); //line n3;
+        } catch (FileNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        } catch (IOException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        
+        System.out.println("Q82 ----------------------------");
+        ZonedDateTime depart = ZonedDateTime.of(2015, 1, 15, 3, 0, 0, 0, ZoneId.of("UTC-7"));
+        ZonedDateTime arrive = ZonedDateTime.of(2015, 1, 15, 9, 0, 0, 0, ZoneId.of("UTC-5"));
+        long hrs = ChronoUnit.HOURS.between(depart, arrive); //line n1
+        System.out.println("Travel time is " + hrs + " hours");
+        
+        System.out.println("Q83 ----------------------------");
+        Path path1 = Paths.get("/app/./sys/");
+        Path res1 = path1.resolve("log");
+        
+        Path path2 = Paths.get("/server/exe/");
+        Path res2 = path2.resolve("/readme/");
+        
+        System.out.println(res1);
+        System.out.println(res2);
+        
+        System.out.println("Q84 ----------------------------");
+        List<String> colors = Arrays.asList("red", "green", "yellow");
+        
+        Predicate<String> test6 = n -> {
+            System.out.println("Searching…");
+            return n.contains("red");
+        };
+        
+        System.out.println(colors.stream().filter(c6 -> c6.length() > 3).allMatch(test6));
+            
+        System.out.println("----Q4------------------------");
+        int [] x2 = {6, 7, 8};
+        for (int j : x2) {
+            System.out.print(j + " ");
+            j++;
+        }
+        System.out.println("");
+        
+        System.out.println("----Q5------------------------");
+        StringBuilder message = new StringBuilder("hello java!");
+        int pos = 0;
+        try {
+            for (pos = 0; pos < 12; pos++) {
+                switch (message.charAt(pos)) {
+                    case 'a':
+                    case 'e':
+                    case 'o':
+                        String uc = Character.toString(message.charAt(pos)).toUpperCase();
+                        message.replace(pos, pos + 1, uc);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Out of limits");
+        }
+        System.out.println(message);
+        
+        System.out.println("----Q9------------------------");
+//        int[] xx = null;
+//        for (int j : xx) {listOfFiles
+//            System.out.println(j);
+//        }
+        
+        
+        System.out.println("--------Q29------------------------");
+            int[] arrar = {1,2,3};
+            for ( int i4: arrar ) {
+            } 
+            
+            for(int i5 = 0; i5 < 1; i5++) {
                 
+            }
+            
+//            for(;;) {
+//                
+//            }
+            
+//            for(; i6 < 1; i6++) {
+//                
+//            }
+//            
+//            for(; i7 < 1;) {
+//                
+//            }
+            
+            System.out.println("--------Q34------------------------");
+            String names[] = new String[3];
+            names[0] = "Mary Brown";
+            names[1] = "Nancy Red";
+            names[2] = "Jessy Orange";
+            
+            try {
+                for (String n : names) {
+                    try {
+                        String pwd = n.substring(0, 3) + n.substring(6, 10);
+                        System.out.println(pwd);
+                    } catch (StringIndexOutOfBoundsException e) {
+                        System.out.println("string out of limits");
+                    }
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Array aout of limits");
+            }
+            
+            
     }
     
     public static void recDelete(String dirName) throws IOException {

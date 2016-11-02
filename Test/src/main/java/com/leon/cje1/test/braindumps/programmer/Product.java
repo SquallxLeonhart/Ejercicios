@@ -18,15 +18,16 @@ public class Product {
     }
 
     public static void main(String[] args) {
-        List<Product> products = new ArrayList<>();
-        products.add(new Product(1, 10));
-        products.add(new Product(2, 30));
-        products.add(new Product(2, 30));
+//        List<Product> products = new ArrayList<>();
+//        products.add(new Product(1, 10));
+//        products.add(new Product(2, 30));
+//        products.add(new Product(2, 30));
         
-                Arrays.asList(
+        List<Product> products =  Arrays.asList(
                             new Product(1, 10), 
-                            new Product(2, 30));
-        
+                            new Product(2, 30),
+                            new Product(2, 30),
+                            new Product(4, 70));
         
         Product p = 
                 products.stream()

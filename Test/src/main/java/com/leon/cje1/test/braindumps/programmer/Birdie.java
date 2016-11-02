@@ -1,5 +1,6 @@
 package com.leon.cje1.test.braindumps.programmer;
 
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 //Q7
@@ -25,4 +26,12 @@ public class Birdie {
     static void fly (Supplier<Bird> bird) {
         bird.get().fly();
     }
+    
+//    static void fly2 (Consumer<Bird> bird) {
+//        bird::fly();
+//    }
+    
+//    static void fly3 (Consumer<? extends Bird> bird) {
+//        bird.accept(new Bird()).fly ();
+//     }
 }
