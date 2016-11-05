@@ -347,6 +347,7 @@ public class Vehicle {
 //        .forEach(s -> System.out.print(s + " "));
         
         
+        System.out.println("");
         System.out.println("Q80 ----------------------------");
         BufferedReader brCopy = null;
         try (BufferedReader br = new BufferedReader (new FileReader("employee.txt"))) { //line n1
