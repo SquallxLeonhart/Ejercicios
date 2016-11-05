@@ -347,6 +347,7 @@ public class Vehicle {
 //        .forEach(s -> System.out.print(s + " "));
         
         
+        System.out.println("");
         System.out.println("Q80 ----------------------------");
         BufferedReader brCopy = null;
         try (BufferedReader br = new BufferedReader (new FileReader("employee.txt"))) { //line n1
@@ -460,6 +461,26 @@ public class Vehicle {
                 System.out.println("Array aout of limits");
             }
             
+            System.out.println("--------Q54------------------------");
+            int b3 = 3;
+            if (!(b3 > 3)) {
+                System.out.println("square ");
+            } 
+            {
+                System.out.println("circle ");
+            }
+            
+            System.out.println("...");
+            
+            System.out.println("--------Q61------------------------");
+            int[] lst = {1, 2, 3, 4, 5, 4, 3, 2, 1};
+            int sum = 0;
+            for (int frnt = 0, rear = lst.length - 1 ;
+                    frnt < 5 && rear >= 5;
+                    frnt++, rear--) {
+                sum = sum + lst[frnt] + lst[rear];
+            }
+            System.out.println(sum);
             
     }
     

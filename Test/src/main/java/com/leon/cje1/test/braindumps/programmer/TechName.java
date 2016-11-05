@@ -16,7 +16,7 @@ public class TechName {
                 Arrays.asList(new TechName("Java-"), new TechName("Oracle DB-"), new TechName("J2EE-"));
         Stream<TechName> stre = tech.stream();
         
-        //stre.forEach(System.out::print);
+        //stre.forEachOrdered(System.out::print);
         stre.map(a-> a.techName).forEach(System.out::print);
 //        stre.map(a-> a.techName).forEachOrdered(System.out::print);
     }
