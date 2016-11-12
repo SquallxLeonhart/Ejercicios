@@ -33,7 +33,7 @@ class Rectangle extends Square {
         br = y;
     }
 
-    public void area() {
+    public void area() { //make it public
         System.out.println("Rectangle");
     }
 }

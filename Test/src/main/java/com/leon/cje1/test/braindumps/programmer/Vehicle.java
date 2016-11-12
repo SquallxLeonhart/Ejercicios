@@ -31,6 +31,7 @@ import java.util.function.IntUnaryOperator;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -65,12 +66,13 @@ public class Vehicle {
 //        IntFunction<Integer> inFu= x -> y -> x*y;//line n1
         IntFunction<IntUnaryOperator> inFu = x -> y -> x*y;
 //        IntFunction<UnaryOperator> inFu = x -> y -> x*y;
+//        BiFunction<IntUnaryOperator> inFu = x -> y -> x*y;
         IntStream newStream = stream.map(inFu.apply(10));//line n2
 //        IntStream newStream = stream.map(inFu.applyAsInt (10));
         newStream.forEach(System.out::println);
         
         //Q3
-        System.out.println("----------------------------");
+        System.out.println("Q3-------Q102---------------------");
         List<Integer> values = Arrays.asList (1, 2, 3);
         long x = values.stream()
         .map(n -> n*2)//line n1
@@ -79,7 +81,7 @@ public class Vehicle {
         System.out.println("count: " + x);
         
         //Q6
-        System.out.println("----------------------------");
+        System.out.println("Q6----------------------------");
         int a = 10;
         int b = -1;
 //        assert (b >=1) : "Invalid Denominator";
@@ -88,12 +90,18 @@ public class Vehicle {
         
         //Q11
         System.out.println("----------------------------");
-        Stream<List<String>> iStr = Stream.of(Arrays.asList("1", "John"), Arrays.asList("2", null));
+        Stream<List<String>> iStr = 
+                Stream.of(
+                        Arrays.asList("1", "John"), 
+                        Arrays.asList("2", null));
 
         Stream<String> nInSt = iStr.flatMap((xx) -> xx.stream());
         nInSt.forEach(System.out::println);
 
-        Stream<List<Integer>> iStr2 = Stream.of(Arrays.asList(1, 2), Arrays.asList(3, 4));
+        Stream<List<Integer>> iStr2 = 
+                Stream.of(
+                        Arrays.asList(1, 2), 
+                        Arrays.asList(3, 4));
                 
         IntStream nInSt2 = iStr2.flatMapToInt((xx) -> xx.stream().mapToInt(yy -> yy));
         nInSt2.forEach (System.out :: println);
@@ -163,7 +171,7 @@ public class Vehicle {
             System.out.print ("Enter GDP: ");
 //            int gdp = Integer.parseInt (br.readLine());
 //            int gdp = br.read();
-//            System.out.print ("GDP: " + gdp);
+//            System.out.println ("GDP: " + gdp);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -214,17 +222,19 @@ public class Vehicle {
         }
         System.out.println("");
         
-        System.out.println("Q38----------------------------");
+        System.out.println("Q38---------Q110-------------------");
         List<String> listVal = Arrays.asList("Joe", "Paul", "Alice", "Tom");
         System.out.println (
         // line n1
                 listVal.stream().filter(x2 -> x2.length()>3).count()
-//                listVal.stream().map(x2 -> x2.length()>3).collect(Collectors.toList())
+//                listVal.stream().map(x2 -> x2.length()>3).count()
+//                listVal.stream().peek(x2 -> x2.length()>3).count().get()
 //                listVal.stream().filter(x2 -> x2.length()>3).mapToInt(x2 -> x2).count()
+//                listVal.stream().map(x2 -> x2.length()>3).collect(Collectors.toList())
         );
         
         
-        System.out.println("Q41----------------------------");
+        System.out.println("Q41-------------Q111---------------");
         List<String> str = Arrays.asList ("my", "pen", "is", "your", "pen");
         Predicate<String> test = s -> {
             int ii = 0;
@@ -241,7 +251,7 @@ public class Vehicle {
             .ifPresent(System.out::println);
         
         
-        System.out.println("Q42----------------------------");
+        System.out.println("Q42----------Q104------------------");
         List<String> empDetails = Arrays.asList("100, Robin, HR",
                 "200, Mary, AdminServices",
                 "101, Peter, HR");
@@ -254,7 +264,10 @@ public class Vehicle {
         List<Integer> nums = Arrays.asList(10, 20, 8);
         System.out.println(
                 nums.stream().max(Comparator.comparing(e -> e)).get()
+//                nums.stream().max(Integer :: max).get()
         ); 
+//        nums.stream().max();
+//        nums.stream().map(a -> a).max();
         
         System.out.println("Q54 ----------------------------");
         List<Integer> codes = Arrays.asList (10, 20);
@@ -269,23 +282,24 @@ public class Vehicle {
         int x3 = indexVal.applyAsInt("Java");//line n2
         System.out.println(x3);
         
-        System.out.println("Q59 ----------------------------");
+        System.out.println("Q59 -----------Q116-----------------");
         List<String> codes2 = Arrays.asList ("DOC", "MPEG", "JPEG");
         codes2.forEach (c4 -> System.out.print(c4 + " "));
         String fmt = codes2.stream()
-        .filter (s-> s.contains ("PEG"))
-        .reduce((s, t) -> s + t)
-        .get();
+            .filter (s-> s.contains ("PEG"))
+            .reduce((s, t) -> s + t)
+            .get();
         System.out.println("\n" + fmt);
         
-        System.out.println("Q60 ----------------------------");
+        System.out.println("Q60 -----------Q66-----------------");
         List<String> nL = Arrays.asList("Jim", "John", "Jeff");
         Function<String, String> funVal = s -> "Hello : ".concat(s);
         
         nL.stream()
         .map(funVal)
 //        .collect(Collectors.toList()).forEach(System.out::println);
-        .peek(System.out::print);
+        //.forEach(System.out::println);
+        .peek(System.out::println);
         
         System.out.println("Q62 ----------------------------");
 //        Locale loc1 = "UK";
@@ -350,10 +364,10 @@ public class Vehicle {
         System.out.println("");
         System.out.println("Q80 ----------------------------");
         BufferedReader brCopy = null;
-        try (BufferedReader br = new BufferedReader (new FileReader("employee.txt"))) { //line n1
-        br.lines().forEach(c5 -> System.out.println(c5));
-        brCopy = br;//line n2
-        brCopy.ready(); //line n3;
+        try (BufferedReader br = new BufferedReader (new FileReader("src/main/resources/employee.txt"))) { //line n1
+            br.lines().forEach(c5 -> System.out.println(c5));
+            brCopy = br;//line n2
+            brCopy.ready(); //line n3;
         } catch (FileNotFoundException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -481,6 +495,73 @@ public class Vehicle {
                 sum = sum + lst[frnt] + lst[rear];
             }
             System.out.println(sum);
+            
+            System.out.println("--------Q78------------------------");
+            String product = "pen";
+            product.toLowerCase();
+            product.concat(" BOX".toLowerCase());
+//            System.out.println(product.substring(4, 6));
+            
+            System.out.println("--------Q80------------------------");
+            String message2 = "Hi everyone!";
+            System.out.println("message = " + message2.replace("e", "X"));
+            
+            System.out.println("--------Q83------------------------");
+            int num = 5;
+            int sum4;
+            
+            do {
+//                sum4 += num;
+            } while ((num--) > 1);
+            
+//            System.out.println("The sum is " + sum4 + ".");
+            
+            System.out.println("--------Q94------------------------");
+            int ar1[] = {2, 4, 6, 8};
+            int ar2[] = {1, 3, 5, 7, 9};
+            ar2 = ar1;
+            for (int e2 : ar2) {
+                System.out.println(" " + e2);
+            }
+            
+            System.out.println(String.valueOf(14180825003981233l));
+            
+            System.out.println("--------Q99------------------------");
+            Stream<Path> paths = 
+                    Stream.of(
+                            Paths.get("src/main/resources/data.doc"), 
+                            Paths.get("src/main/resources/data.txt"), 
+                            Paths.get("src/main/resources/data.xml"));
+            
+            paths.filter(s -> s.toString()
+                                .endsWith("txt"))
+                                .forEach(s -> {
+                                    try {
+                                        Files.readAllLines(s)
+                                             .stream()
+                                             .forEach(System.out::println); // line n1
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                        System.out.println("Exception");
+                                    }
+                                });
+            
+            
+            System.out.println("--------Q100------------------------");
+            int i4 = 10;
+            int j4 = 20;
+            int k4 = j4 += i4 / 5;
+            
+            System.out.println(i4 + " : " +  j4 + " : " + k4);
+            
+            System.out.println("--------Q106------------------------");
+            try {
+                String theString = "Hellow World";
+                System.out.println(theString.length());
+                System.out.println(theString.charAt(11));
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
             
     }
     

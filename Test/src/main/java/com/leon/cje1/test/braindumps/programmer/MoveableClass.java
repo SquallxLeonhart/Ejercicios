@@ -7,6 +7,14 @@ public class MoveableClass {
         animal.run(100);
         animal.walk(20);
         
+        Moveable<Integer> animal2 = n -> System.out.println("Running" + n);
+        animal.run(100);
+        animal.walk(20);
+        
+//        Moveable animal = (Integer n) -> System.out.println(n);
+//        animal.run(100);
+//        Moveable.walk(20);
+        
 //        Moveable animal2 = (Object n) -> System.out.println(n);
 //        animal2.run(100);
 //        animal3.walk(20);

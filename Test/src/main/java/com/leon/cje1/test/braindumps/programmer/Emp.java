@@ -53,7 +53,8 @@ public class Emp {
                         //line n1
                         .map(Emp::getfName)
                         .sorted(Comparator.reverseOrder())
-                        .collect(Collectors.toList()).forEach(System.out::println);
+                        .collect(Collectors.toList())
+                        .forEach(System.out::println);
        
     }
 }
